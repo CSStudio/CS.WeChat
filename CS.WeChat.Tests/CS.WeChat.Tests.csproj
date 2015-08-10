@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\CSHive\Libs\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +46,21 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebChat\ApiTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CSHive\CSHive\CSHive\CSHive[v3.0].csproj">
+      <Project>{f647b933-64ca-473f-945e-6ac0df657e22}</Project>
+      <Name>CSHive[v3.0]</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.WeChat.Core\CS.WeChat.Core.csproj">
+      <Project>{738738e3-f552-4dbb-ad93-6969fd96b3a8}</Project>
+      <Name>CS.WeChat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.WeChat.SDK\CS.WeChat.SDK.csproj">
+      <Project>{4a759bf6-4540-4483-a2d7-8b83bcf65076}</Project>
+      <Name>CS.WeChat.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

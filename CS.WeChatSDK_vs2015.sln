@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.WeChat.Core", "CS.WeChat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC5Web", "..\DotNet\MVC5Web\MVC5Web.csproj", "{B79D33B2-4241-4436-AF1E-13EBB2A86AF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSHive.Tests", "..\CSHive\CSHive\CSHive.Tests\CSHive.Tests.csproj", "{DD515A11-A1F6-4C43-A51C-001488902111}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B79D33B2-4241-4436-AF1E-13EBB2A86AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B79D33B2-4241-4436-AF1E-13EBB2A86AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B79D33B2-4241-4436-AF1E-13EBB2A86AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD515A11-A1F6-4C43-A51C-001488902111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD515A11-A1F6-4C43-A51C-001488902111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD515A11-A1F6-4C43-A51C-001488902111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD515A11-A1F6-4C43-A51C-001488902111}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
