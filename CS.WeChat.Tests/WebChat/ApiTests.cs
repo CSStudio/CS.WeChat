@@ -15,7 +15,6 @@ namespace CS.WeChat.Tests.WebChat
         [SetUp]
         public void Setup()
         {
-            Api.Init(appId, appSecret);
         }
 
         [Test]

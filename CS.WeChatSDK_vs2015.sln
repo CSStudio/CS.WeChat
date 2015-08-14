@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC5Web", "..\DotNet\MVC5We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSHive.Tests", "..\CSHive\CSHive\CSHive.Tests\CSHive.Tests.csproj", "{DD515A11-A1F6-4C43-A51C-001488902111}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.EFExample", "..\DotNet\CS.EFExample\CS.EFExample.csproj", "{CD58077D-4B2A-486A-98FB-9895AA1E7A5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChatVote.Web", "..\..\git-source\mp.cszi.com\sources\WeChatVote.Web\WeChatVote.Web.csproj", "{5E9180A6-52BF-42A7-A38E-D5BABF12F479}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{DD515A11-A1F6-4C43-A51C-001488902111}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD515A11-A1F6-4C43-A51C-001488902111}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD515A11-A1F6-4C43-A51C-001488902111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD58077D-4B2A-486A-98FB-9895AA1E7A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD58077D-4B2A-486A-98FB-9895AA1E7A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD58077D-4B2A-486A-98FB-9895AA1E7A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD58077D-4B2A-486A-98FB-9895AA1E7A5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E9180A6-52BF-42A7-A38E-D5BABF12F479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9180A6-52BF-42A7-A38E-D5BABF12F479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9180A6-52BF-42A7-A38E-D5BABF12F479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9180A6-52BF-42A7-A38E-D5BABF12F479}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

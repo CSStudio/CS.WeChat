@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebChat\ApiHelperTest.cs" />
     <Compile Include="WebChat\ApiTests.cs" />
+    <Compile Include="WebChat\JsApiTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CSHive\CSHive\CSHive\CSHive[v3.0].csproj">
@@ -61,6 +63,12 @@
       <Project>{4a759bf6-4540-4483-a2d7-8b83bcf65076}</Project>
       <Name>CS.WeChat.SDK</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extension\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
