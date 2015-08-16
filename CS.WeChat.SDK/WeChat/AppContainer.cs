@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Configuration;
+using System.Dynamic;
 using System.Linq;
 using CS.Caching;
 using CS.Config;
@@ -18,7 +20,14 @@ namespace CS.WeChat
 
         static AppContainer()
         {
-            Dic = new ConcurrentDictionary<string, AppItem> {[WeChatSetting.AppId] = new AppItem(WeChatSetting.AppId, WeChatSetting.AppSecret) }; //至少有一个App应用
+            Dic = new ConcurrentDictionary<string, AppItem>
+            {
+                [WeChatSetting.AppId] = new AppItem(WeChatSetting.AppId, WeChatSetting.AppSecret)
+                {
+                    AuthScope = WeChatSetting.AuthScope ,
+                    OAuthCallbackUrl = WeChatSetting.OAuthCallbackUrl
+                }
+            }; //至少有一个App应用
         }
 
         private static readonly ConcurrentDictionary<string, AppItem> Dic ;
@@ -31,29 +40,21 @@ namespace CS.WeChat
         /// <summary>
         /// 返回默认的Token
         /// </summary>
-        public static string AccessToken => GetAccessToken(null);
+        public static string AccessToken => GetAccessToken();
         /// <summary>
         /// 返回默认的JsTicket
         /// </summary>
-        public static string JsTicket => GetJsTicket(null);
+        public static string JsTicket => GetJsTicket();
+
 
         /// <summary>
         /// 返回对应的AppId的Token
         /// </summary>
         /// <param name="appId"></param>
         /// <returns></returns>
-        public static string GetAccessToken(string appId)
+        public static string GetAccessToken(string appId=null)
         {
-            AppItem item;
-            if (string.IsNullOrEmpty(appId))
-            {
-                item = Dic.FirstOrDefault().Value;
-            }
-            else
-            {
-                Dic.TryGetValue(appId, out item);
-            }
-            if (string.IsNullOrEmpty(item?.AppSecret)) throw new OperationCanceledException($"please init the wechat app with appId=[{appId}] & appSecret first.");
+            var item = GetAppItem(appId);
             var now = DateTime.Now.ToSecondTime();
             if (item.TokenTimeout < now)
             {
@@ -77,18 +78,9 @@ namespace CS.WeChat
         /// </summary>
         /// <param name="appId"></param>
         /// <returns></returns>
-        public static string GetJsTicket(string appId)
+        public static string GetJsTicket(string appId=null)
         {
-            AppItem item;
-            if (string.IsNullOrEmpty(appId))
-            {
-                item = Dic.FirstOrDefault().Value;
-            }
-            else
-            {
-                Dic.TryGetValue(appId, out item);
-            }
-            if (string.IsNullOrEmpty(item?.AppSecret)) throw new OperationCanceledException($"please init the wechat app with appId=[{appId}] & appSecret first.");
+            var item = GetAppItem(appId);
             var now = DateTime.Now.ToSecondTime();
             if (item.TiecktTimeout < now)
             {
@@ -108,6 +100,52 @@ namespace CS.WeChat
             return item.JsTicket;
         }
 
+        /// <summary>
+        /// 获取AppItem，如果AppId为空时则获取默认的
+        /// </summary>
+        /// <param name="appId"></param>
+        /// <returns></returns>
+        internal static AppItem GetAppItem(string appId = null)
+        {
+            AppItem item;
+            if (string.IsNullOrEmpty(appId))
+            {
+                item = Dic.FirstOrDefault().Value;
+            }
+            else
+            {
+                Dic.TryGetValue(appId, out item);
+            }
+            if (string.IsNullOrEmpty(item?.AppSecret)) throw new OperationCanceledException($"please init the wechat app with appId=[{appId}] & appSecret first.");
+            return item;
+        }
+
+        /// <summary>
+        /// 配置中默认的AppId
+        /// </summary>
+        /// <returns></returns>
+        public static string GetDefaultAppId()
+        {
+            var item = GetAppItem();
+            return item.AppId;
+        }
+
+        /// <summary>
+        /// 返回JsSdk中的Js的相关参数
+        /// </summary>
+        /// <param name="appId"></param>
+        /// <param name="absUri"></param>
+        /// <returns></returns>
+        public static dynamic GetJsSdkSetting(string absUri ,string appId = null)
+        {
+            dynamic json = new ExpandoObject();
+            json.appId = string.IsNullOrEmpty(appId)? GetDefaultAppId() : appId;
+            json.timestamp = ApiHelper.GetTimestamp();
+            json.nonceStr = ApiHelper.GetRandomString();
+            json.signature = ApiHelper.GetJsSignature(json.appId, json.timestamp, json.nonceStr, absUri);
+            return json;
+        }
+
 
     }
 
@@ -123,11 +161,13 @@ namespace CS.WeChat
             TokenTimeout = 0;
             TiecktTimeout = 0;
         }
+
         /// <summary>
         /// 
         /// </summary>
 
         public string AppId { get; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -152,6 +192,12 @@ namespace CS.WeChat
         /// 票据过期时间，秒
         /// </summary>
         public long TiecktTimeout { get; set; }
+
+
+
+        public string AuthScope { get; set; }
+
+        public string OAuthCallbackUrl { get; set; }
 
     }
 }

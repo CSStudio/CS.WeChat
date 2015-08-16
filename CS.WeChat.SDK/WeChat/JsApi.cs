@@ -31,7 +31,7 @@ namespace CS.WeChat
 
         public static string RequestTicket(string token)
         {
-            var url = $"{ApiUrl.BaseUrl}cgi-bin/ticket/getticket?access_token={token}&type=jsapi";
+            var url = $"{ApiHost.API}cgi-bin/ticket/getticket?access_token={token}&type=jsapi";
             var res = HttpHelper.Get(url);
             Tracer.Debug($"RequestToken\nRequest:{url}\nResponse:{res}");
             return res;

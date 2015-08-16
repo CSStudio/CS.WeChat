@@ -14,6 +14,17 @@ namespace CS.Config
         public static string AppId => WebChatConfig.Instance.KeyValues["appId"];
 
         public static string AppSecret => WebChatConfig.Instance.KeyValues["appSecret"];
+
+        /// <summary>
+        /// 授权方式 snsapi_base, snsapi_userinfo(要用户手动确认)
+        /// </summary>
+        public static string AuthScope => WebChatConfig.Instance.KeyValues["AuthScope"].ToInt(0) == 0 ? "snsapi_base" : "snsapi_userinfo";
+
+        /// <summary>
+        /// 页面授权时的回调地址
+        /// </summary>
+        public static string OAuthCallbackUrl => WebChatConfig.Instance.KeyValues["OAuthCallbackUrl"];
+
     }
 
     class WebChatConfig : SectionBase

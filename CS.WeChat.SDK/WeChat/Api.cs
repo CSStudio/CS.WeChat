@@ -28,7 +28,7 @@ namespace CS.WeChat
 
         public static string RequestToken(string appId, string appSecret)
         {
-            var url = $"{ApiUrl.BaseUrl}cgi-bin/token?grant_type=client_credential&appid={appId}&secret={appSecret}";
+            var url = $"{ApiHost.API}cgi-bin/token?grant_type=client_credential&appid={appId}&secret={appSecret}";
             var res = HttpHelper.Get(url);
             Tracer.Debug($"RequestToken\nRequest:{url}\nResponse:{res}");
             return res;

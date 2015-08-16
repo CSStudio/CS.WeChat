@@ -38,7 +38,9 @@
       <HintPath>..\..\CSHive\Libs\Newtonsoft.Json\Net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,9 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeChat\Api.cs" />
     <Compile Include="WeChat\ApiHelper.cs" />
-    <Compile Include="WeChat\ApiUrl.cs" />
+    <Compile Include="WeChat\ApiHost.cs" />
     <Compile Include="WeChat\AppContainer.cs" />
     <Compile Include="WeChat\JsApi.cs" />
+    <Compile Include="WeChat\OAuthApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CSHive\CSHive\CSHive\CSHive[v3.0].csproj">
